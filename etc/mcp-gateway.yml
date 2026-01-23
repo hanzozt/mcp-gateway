@@ -1,0 +1,167 @@
+# mcp-gateway configuration
+#
+# the gateway aggregates multiple MCP backend servers and serves them via zrok.
+# it can run in two modes:
+#
+# standalone mode (default):
+#   - gateway creates its own zrok share
+#   - share token is printed to stdout as JSON: {"share_token":"..."}
+#   - use this mode for simple deployments
+#
+# managed mode:
+#   - external orchestrator creates share and passes share_token to gateway
+#   - gateway connects to orchestrator via IPC for lifecycle management
+#   - enables health monitoring, graceful shutdown, and centralized control
+#
+# usage:
+#   mcp-gateway run /path/to/config.yml
+
+# ------------------------------------------------------------------------------
+# managed mode configuration (optional)
+# ------------------------------------------------------------------------------
+
+# share token for managed mode
+# when set, gateway connects to an existing share created by orchestrator
+# if not set, gateway creates its own share (standalone mode)
+#share_token: "abc123xyz"
+
+# orchestrator IPC configuration (managed mode only)
+# enables communication with an orchestrator for lifecycle management
+#orchestrator:
+#  # unix socket path for IPC (must match orchestrator config)
+#  socket_path: "/var/run/mcp-orchestrator/orchestrator.sock"
+#
+#  # interval between heartbeat messages to orchestrator
+#  # should be less than orchestrator's heartbeat timeout
+#  heartbeat_interval: 30s
+
+# log file path (managed mode only)
+# when set, gateway redirects logging to this file instead of stdout
+# this allows the gateway to run detached from the orchestrator
+#log_file: "/var/log/mcp-gateway/gateway.log"
+
+# ------------------------------------------------------------------------------
+# aggregator configuration
+# ------------------------------------------------------------------------------
+
+aggregator:
+  # server name reported to MCP clients
+  name: "mcp-gateway"
+
+  # server version reported to MCP clients
+  version: "1.0.0"
+
+  # separator used for tool namespacing
+  # tools are prefixed with backend id: <backend_id><separator><tool_name>
+  # example with separator ":": "filesystem:read_file", "github:create_issue"
+  # common choices: ":" (colon), "_" (underscore), "-" (hyphen)
+  separator: "_"
+
+  # connection timeouts for backend MCP servers
+  connection:
+    # timeout for establishing connection to backend
+    connect_timeout: 30s
+
+    # timeout for individual tool calls
+    call_timeout: 60s
+
+# ------------------------------------------------------------------------------
+# backend configuration
+# ------------------------------------------------------------------------------
+
+backends:
+  # ------------------------------------------------------------------------------
+  # example: local stdio backend (filesystem server)
+  # ------------------------------------------------------------------------------
+  - id: "filesystem"
+    # human-readable name (optional, defaults to id)
+    name: "Filesystem Tools"
+
+    transport:
+      # stdio: spawn a local subprocess
+      type: "stdio"
+
+      # command to execute
+      command: "npx"
+
+      # command arguments
+      args:
+        - "-y"
+        - "@modelcontextprotocol/server-filesystem"
+        - "/home/user/documents"
+
+      # environment variables (optional)
+      #env:
+      #  DEBUG: "true"
+
+      # working directory (optional)
+      #working_dir: "/home/user"
+
+    # tool filtering (optional)
+    # controls which tools from this backend are exposed
+    tools:
+      # mode: "allow" or "deny"
+      # allow: only tools matching patterns are exposed
+      # deny: all tools except those matching patterns are exposed
+      mode: "allow"
+
+      # glob patterns for tool names
+      # supports * (any characters) and ? (single character)
+      list:
+        - "read_file"
+        - "list_directory"
+        - "search_files"
+        # write operations not exposed in this example
+
+  # ------------------------------------------------------------------------------
+  # example: local stdio backend (github server)
+  # ------------------------------------------------------------------------------
+  - id: "github"
+    name: "GitHub Tools"
+
+    transport:
+      type: "stdio"
+      command: "npx"
+      args:
+        - "-y"
+        - "@modelcontextprotocol/server-github"
+      env:
+        GITHUB_TOKEN: "${GITHUB_TOKEN}"  # use environment variable
+
+    tools:
+      # deny mode: expose everything except dangerous operations
+      mode: "deny"
+      list:
+        - "delete_*"
+        - "force_*"
+
+  # ------------------------------------------------------------------------------
+  # example: remote zrok backend (connecting to mcp-bridge)
+  # ------------------------------------------------------------------------------
+  #- id: "remote-tools"
+  #  name: "Remote Tool Server"
+  #
+  #  transport:
+  #    # zrok: connect to a remote mcp-bridge via zrok share
+  #    type: "zrok"
+  #
+  #    # share token from mcp-bridge output
+  #    share_token: "xyz789abc"
+  #
+  #  # tool filtering works the same for remote backends
+  #  tools:
+  #    mode: "allow"
+  #    list:
+  #      - "*"  # allow all tools from this backend
+
+  # ------------------------------------------------------------------------------
+  # example: database server with no filtering
+  # ------------------------------------------------------------------------------
+  #- id: "postgres"
+  #  transport:
+  #    type: "stdio"
+  #    command: "mcp-server-postgres"
+  #    env:
+  #      DATABASE_URL: "postgres://user:pass@localhost/db"
+  #
+  #  # no tools section = all tools exposed (no filtering)

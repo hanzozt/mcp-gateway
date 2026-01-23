@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+option go_package = "github.com/openziti/mcp-gateway/ipc/gatewayGrpc";
+
+service GatewayIPC {
+    // bidirectional stream: gateway connects, both sides send messages
+    rpc Connect(stream GatewayMessage) returns (stream OrchestratorMessage);
+}
+
+// gateway -> orchestrator (wrapper)
+message GatewayMessage {
+    oneof payload {
+        RegisterRequest register = 1;
+        HeartbeatRequest heartbeat = 2;
+        StatusReport status = 3;
+        PingResponse pong = 4;
+        ShutdownAck shutdown_ack = 5;
+    }
+}
+
+// orchestrator -> gateway (wrapper)
+message OrchestratorMessage {
+    oneof payload {
+        RegisterResponse register_response = 1;
+        HeartbeatAck heartbeat_ack = 2;
+        PingRequest ping = 3;
+        ShutdownRequest shutdown = 4;
+    }
+}
+
+// gateway -> orchestrator: initial registration
+message RegisterRequest {
+    string share_token = 1;
+    int64 pid = 2;
+}
+
+message RegisterResponse {
+    bool accepted = 1;
+    string error = 2;
+}
+
+// gateway -> orchestrator: periodic health signal
+message HeartbeatRequest {
+    string share_token = 1;
+    int32 active_connections = 2;
+    int64 tool_invocations = 3;
+}
+
+message HeartbeatAck {}
+
+// gateway -> orchestrator: state change notification
+message StatusReport {
+    string share_token = 1;
+    string state = 2;  // "starting", "running", "stopping", "failed"
+    string error = 3;
+}
+
+// orchestrator -> gateway: health check
+message PingRequest {}
+
+message PingResponse {
+    string version = 1;
+}
+
+// orchestrator -> gateway: shutdown command
+message ShutdownRequest {
+    string reason = 1;
+}
+
+message ShutdownAck {
+    bool accepted = 1;
+}
