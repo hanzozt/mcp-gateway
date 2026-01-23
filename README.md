@@ -2,7 +2,7 @@
 
 **Zero-trust access to MCP tools over OpenZiti**
 
-MCP Gateway lets AI assistants securely access internal tools without exposing public endpoints. Built on [OpenZiti](https://openziti.io) and [zrok](https://zrok.io), it provides cryptographically secure connectivity with zero attack surface.
+MCP Gateway lets AI assistants securely access internal tools without exposing public endpoints. Built on [OpenZiti](https://openziti.io) and [zrok](https://zrok.io), it provides cryptographically secure, zero trust connectivity with no attack surface.
 
 ## The Trifecta
 
