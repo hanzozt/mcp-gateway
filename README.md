@@ -12,7 +12,7 @@ Three simple components that work together:
 
 | Component | Purpose |
 |-----------|---------|
-| **mcp-tools** | Connects MCP clients to remote shares (stdio or HTTP) |
+| **mcp-tools** | Connects MCP clients to remote shares (stdio or HTTP), manages reserved shares |
 | **mcp-gateway** | Aggregates multiple backends into one secure endpoint (SSE/HTTP) |
 | **mcp-bridge** | Exposes a single MCP server to the network (SSE/HTTP) |
 
@@ -138,6 +138,34 @@ backends:
       type: zrok
       share_token: "token-from-bridge"
 ```
+
+### Reserved Shares
+
+By default, `mcp-gateway` and `mcp-bridge` create an ephemeral share that disappears when the process exits. **Reserved shares** persist server-side in zrok, so a gateway or bridge can stop and restart without changing the share token.
+
+```bash
+# create a reserved share with a chosen name
+mcp-tools create my-gateway
+# outputs: {"share_token":"my-gateway"}
+
+# use the token in a gateway config (share_token: my-gateway) or bridge
+mcp-gateway run config.yml
+mcp-bridge --share-token my-gateway npx -y @modelcontextprotocol/server-filesystem /home/user
+
+# the gateway/bridge can restart and reconnect to the same share
+
+# when done, delete the share
+mcp-tools delete my-gateway
+```
+
+If you omit the name, zrok generates a random token:
+
+```bash
+mcp-tools create
+# outputs: {"share_token":"abc123xyz"}
+```
+
+The token name must be 3–32 characters, lowercase alphanumeric and hyphens (`[a-z0-9-]`).
 
 ### HTTP Transport
 
