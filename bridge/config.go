@@ -8,6 +8,7 @@ type Config struct {
 	Args       []string
 	Env        map[string]string
 	WorkingDir string
+	ShareToken string
 }
 
 // Validate ensures the config is valid.

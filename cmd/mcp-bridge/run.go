@@ -19,6 +19,7 @@ type runCommand struct {
 	args       []string
 	env        []string
 	workingDir string
+	shareToken string
 	cmd        *cobra.Command
 }
 
@@ -32,6 +33,7 @@ func newRunCommand() *runCommand {
 	cmd.Flags().StringArrayVar(&command.args, "args", nil, "Arguments to pass to the command (can be specified multiple times)")
 	cmd.Flags().StringArrayVar(&command.env, "env", nil, "Environment variables in KEY=VALUE format (can be specified multiple times)")
 	cmd.Flags().StringVar(&command.workingDir, "working-dir", "", "Working directory for the command")
+	cmd.Flags().StringVar(&command.shareToken, "share-token", "", "Pre-created zrok share token (managed mode)")
 	cmd.Run = command.run
 	return command
 }
@@ -58,6 +60,7 @@ func (c *runCommand) run(_ *cobra.Command, args []string) {
 		Args:       c.args,
 		Env:        env,
 		WorkingDir: c.workingDir,
+		ShareToken: c.shareToken,
 	}
 
 	b, err := bridge.New(cfg)

@@ -69,8 +69,13 @@ func (b *Bridge) Start(ctx context.Context) error {
 
 	dl.Log().With("tool_count", len(tools)).Info("discovered tools from backend")
 
-	// create zrok share
-	share, err := gateway.NewShare()
+	// create or connect to zrok share
+	var share *gateway.Share
+	if b.cfg.ShareToken != "" {
+		share, err = gateway.NewShareFromToken(b.cfg.ShareToken)
+	} else {
+		share, err = gateway.NewShare()
+	}
 	if err != nil {
 		return fmt.Errorf("failed to create share: %w", err)
 	}
