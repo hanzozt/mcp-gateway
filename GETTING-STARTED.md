@@ -215,26 +215,21 @@ Options:
 
 Any MCP client that supports stdio transport can use `mcp-tools run <token>` directly. For HTTP-based clients, use `mcp-tools http`.
 
-## Part 5: Reserved Shares (Persistent Tokens)
+## Part 5: Persistent Shares
 
-By default, share tokens are ephemeral—they disappear when the process exits. For production use, create reserved shares that persist.
+By default, share tokens are ephemeral—they disappear when the process exits. For production use, create persistent shares that survive restarts.
 
-### Create a Reserved Share
+### Create a Persistent Share
 
 Share names are globally unique across the zrok instance. Choose a name unlikely to conflict:
 
 ```bash
-mcp-tools create abc123-gateway
+zrok2 create share abc123-gateway
 ```
 
-Output:
-```json
-{"share_token":"abc123-gateway"}
-```
+This outputs the share token. If the name is taken, you'll get an error—just choose a different name.
 
-If the name is taken, you'll get an error—just choose a different name.
-
-### Use the Reserved Share
+### Use the Persistent Share
 
 In your gateway config, add the share token:
 
@@ -257,7 +252,7 @@ Now you can stop and restart the gateway or bridge, and clients can reconnect us
 ### Delete When Done
 
 ```bash
-mcp-tools delete abc123-gateway
+zrok2 delete share abc123-gateway
 ```
 
 ### Auto-Generated Tokens
@@ -265,12 +260,7 @@ mcp-tools delete abc123-gateway
 If you omit the name, zrok generates a random token:
 
 ```bash
-mcp-tools create
-```
-
-Output:
-```json
-{"share_token":"abc123xyz789"}
+zrok2 create share
 ```
 
 Token names must be 3–32 characters, lowercase alphanumeric and hyphens (`[a-z0-9-]`).
