@@ -40,9 +40,7 @@ flowchart LR
 ### 1. Install
 
 ```bash
-go install github.com/openziti/mcp-gateway/cmd/mcp-gateway@latest
-go install github.com/openziti/mcp-gateway/cmd/mcp-bridge@latest
-go install github.com/openziti/mcp-gateway/cmd/mcp-tools@latest
+go install github.com/openziti/mcp-gateway/cmd/...@latest
 ```
 
 ### 2. Enable zrok
