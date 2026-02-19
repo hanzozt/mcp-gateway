@@ -17,8 +17,8 @@ import (
 	"github.com/michaelquigley/df/dd"
 	"github.com/michaelquigley/df/dl"
 	"github.com/modelcontextprotocol/go-sdk/mcp"
-	"github.com/openziti/mcp-gateway/gateway"
-	"github.com/openziti/mcp-gateway/model"
+	"github.com/hanzozt/mcp-gateway/gateway"
+	"github.com/hanzozt/mcp-gateway/model"
 )
 
 // Bridge wraps a single stdio MCP server and exposes it via zrok.

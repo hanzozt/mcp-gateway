@@ -7,7 +7,7 @@ import (
 	"syscall"
 
 	"github.com/michaelquigley/df/dl"
-	"github.com/openziti/mcp-gateway/tools"
+	"github.com/hanzozt/mcp-gateway/tools"
 	"github.com/spf13/cobra"
 )
 

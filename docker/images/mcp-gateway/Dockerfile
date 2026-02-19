@@ -1,4 +1,4 @@
-# this builds docker.io/openziti/mcp-gateway
+# this builds docker.io/hanzozt/mcp-gateway
 FROM registry.access.redhat.com/ubi10/ubi-minimal
 
 ARG ARTIFACTS_DIR=./dist
@@ -8,13 +8,13 @@ ARG TARGETOS
 ARG TARGETARCH
 
 ### Required OpenShift Labels
-LABEL name="openziti/mcp-gateway" \
+LABEL name="hanzozt/mcp-gateway" \
       maintainer="support@netfoundry.io" \
       vendor="NetFoundry" \
       summary="Run the MCP Gateway" \
       description="Aggregate and serve MCP tools via zrok" \
       org.opencontainers.image.description="Aggregate and serve MCP tools via zrok" \
-      org.opencontainers.image.source="https://github.com/openziti/mcp-gateway"
+      org.opencontainers.image.source="https://github.com/hanzozt/mcp-gateway"
 
 ### add licenses to this directory
 RUN mkdir -p -m0755 /licenses

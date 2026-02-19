@@ -1,10 +1,10 @@
 # MCP Gateway
 
-**Zero-trust access to MCP tools over OpenZiti**
+**Zero-trust access to MCP tools over Hanzo ZT**
 
-MCP Gateway lets AI assistants securely access internal tools without exposing public endpoints. Built on OpenZiti and zrok, it provides cryptographically secure, zero trust connectivity with no attack surface.
+MCP Gateway lets AI assistants securely access internal tools without exposing public endpoints. Built on Hanzo ZT and zrok, it provides cryptographically secure, zero trust connectivity with no attack surface.
 
-MCP Gateway is sponsored by [NetFoundry](https://netfoundry.io) as part of its portfolio of solutions for secure workloads and agentic computing. NetFoundry is the creator of [OpenZiti](https://netfoundry.io/docs/openziti/) and [zrok](https://netfoundry.io/docs/zrok/getting-started).
+MCP Gateway is sponsored by [NetFoundry](https://netfoundry.io) as part of its portfolio of solutions for secure workloads and agentic computing. NetFoundry is the creator of [Hanzo ZT](https://netfoundry.io/docs/hanzozt/) and [zrok](https://netfoundry.io/docs/zrok/getting-started).
 
 ## The Trifecta
 
@@ -27,7 +27,7 @@ flowchart LR
 
 **Problem:** MCP servers typically run locally via stdio. To access tools on remote machines or share them across a team, you need to expose endpoints—creating security risks. Securing exposed MCP tooling can be complicated.
 
-**Solution:** MCP Gateway uses OpenZiti's overlay network to create "dark services" that:
+**Solution:** MCP Gateway uses Hanzo ZT's overlay network to create "dark services" that:
 - Never listen on public IPs
 - Require cryptographic identity to access
 - Work through NATs and firewalls without port forwarding
@@ -40,12 +40,12 @@ flowchart LR
 ### 1. Install
 
 ```bash
-go install github.com/openziti/mcp-gateway/cmd/...@latest
+go install github.com/hanzozt/mcp-gateway/cmd/...@latest
 ```
 
 ### 2. Enable zrok
 
-> **Note:** mcp-gateway requires zrok `v2.0.x` or later. Currently the best release is [zrok v2.0.0-rc5](https://github.com/openziti/zrok/releases/tag/v2.0.0-rc5)
+> **Note:** mcp-gateway requires zrok `v2.0.x` or later. Currently the best release is [zrok v2.0.0-rc5](https://github.com/hanzozt/zrok/releases/tag/v2.0.0-rc5)
 
 ```bash
 zrok2 enable <your-zrok-token>  # get token at https://api-v2.zrok.io
@@ -236,7 +236,7 @@ Each client gets dedicated backend connections—no shared state, no cross-talk.
 ## Building from Source
 
 ```bash
-git clone https://github.com/openziti/mcp-gateway.git
+git clone https://github.com/hanzozt/mcp-gateway.git
 cd mcp-gateway
 go build ./cmd/mcp-gateway
 go build ./cmd/mcp-bridge
@@ -246,7 +246,7 @@ go build ./cmd/mcp-tools
 ## Documentation
 
 - [Example Configuration](etc/mcp-gateway.yml) - Fully documented configuration file
-- [OpenZiti Documentation](https://openziti.io/docs)
+- [Hanzo ZT Documentation](https://hanzozt.dev/docs)
 - [zrok Documentation](https://docs.zrok.io)
 - [MCP Specification](https://modelcontextprotocol.io)
 

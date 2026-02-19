@@ -6,7 +6,7 @@ import (
 
 	"github.com/michaelquigley/df/dl"
 	"github.com/modelcontextprotocol/go-sdk/mcp"
-	"github.com/openziti/mcp-gateway/aggregator"
+	"github.com/hanzozt/mcp-gateway/aggregator"
 )
 
 // SessionFactory creates isolated ClientSessions for each incoming connection.

@@ -4,7 +4,7 @@ import (
 	"os"
 
 	"github.com/michaelquigley/df/dl"
-	"github.com/openziti/mcp-gateway/build"
+	"github.com/hanzozt/mcp-gateway/build"
 	"github.com/spf13/cobra"
 )
 
@@ -15,7 +15,7 @@ var rootCmd = &cobra.Command{
 }
 
 func main() {
-	dl.Init(dl.DefaultOptions().SetTrimPrefix("github.com/openziti/"))
+	dl.Init(dl.DefaultOptions().SetTrimPrefix("github.com/hanzozt/"))
 	if err := rootCmd.Execute(); err != nil {
 		os.Exit(1)
 	}

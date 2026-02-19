@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/michaelquigley/df/dl"
-	"github.com/openziti/mcp-gateway/ipc/gatewayGrpc"
+	"github.com/hanzozt/mcp-gateway/ipc/gatewayGrpc"
 	"github.com/pkg/errors"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"

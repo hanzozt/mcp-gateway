@@ -745,7 +745,7 @@ const file_ipc_gatewayGrpc_gateway_proto_rawDesc = "" +
 	"\baccepted\x18\x01 \x01(\bR\baccepted2B\n" +
 	"\n" +
 	"GatewayIPC\x124\n" +
-	"\aConnect\x12\x0f.GatewayMessage\x1a\x14.OrchestratorMessage(\x010\x01B1Z/github.com/openziti/mcp-gateway/ipc/gatewayGrpcb\x06proto3"
+	"\aConnect\x12\x0f.GatewayMessage\x1a\x14.OrchestratorMessage(\x010\x01B1Z/github.com/hanzozt/mcp-gateway/ipc/gatewayGrpcb\x06proto3"
 
 var (
 	file_ipc_gatewayGrpc_gateway_proto_rawDescOnce sync.Once

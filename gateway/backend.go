@@ -10,9 +10,9 @@ import (
 	"github.com/michaelquigley/df/dd"
 	"github.com/michaelquigley/df/dl"
 	"github.com/modelcontextprotocol/go-sdk/mcp"
-	"github.com/openziti/mcp-gateway/aggregator"
-	"github.com/openziti/mcp-gateway/gateway/ipc"
-	"github.com/openziti/mcp-gateway/model"
+	"github.com/hanzozt/mcp-gateway/aggregator"
+	"github.com/hanzozt/mcp-gateway/gateway/ipc"
+	"github.com/hanzozt/mcp-gateway/model"
 )
 
 // Backend manages the lifecycle of a zrok share serving MCP with per-client sessions.

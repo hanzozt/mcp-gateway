@@ -1,4 +1,4 @@
-module github.com/openziti/mcp-gateway
+module github.com/hanzozt/mcp-gateway
 
 go 1.25.4
 
@@ -6,8 +6,8 @@ require (
 	github.com/google/uuid v1.6.0
 	github.com/michaelquigley/df v0.3.7
 	github.com/modelcontextprotocol/go-sdk v1.1.0
-	github.com/openziti/sdk-golang v1.2.8
-	github.com/openziti/zrok/v2 v2.0.0-rc5
+	github.com/hanzozt/sdk-golang v1.2.8
+	github.com/hanzozt/zrok/v2 v2.0.0-rc5
 	github.com/pkg/errors v0.9.1
 	github.com/spf13/cobra v1.10.1
 	google.golang.org/grpc v1.78.0
@@ -64,13 +64,13 @@ require (
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/muhlemmer/gu v0.3.1 // indirect
 	github.com/oklog/ulid v1.3.1 // indirect
-	github.com/openziti/channel/v4 v4.2.37 // indirect
-	github.com/openziti/edge-api v0.26.48 // indirect
-	github.com/openziti/foundation/v2 v2.0.77 // indirect
-	github.com/openziti/identity v1.0.116 // indirect
-	github.com/openziti/metrics v1.4.2 // indirect
-	github.com/openziti/secretstream v0.1.39 // indirect
-	github.com/openziti/transport/v2 v2.0.194 // indirect
+	github.com/hanzozt/channel/v4 v4.2.37 // indirect
+	github.com/hanzozt/edge-api v0.26.48 // indirect
+	github.com/hanzozt/foundation/v2 v2.0.77 // indirect
+	github.com/hanzozt/identity v1.0.116 // indirect
+	github.com/hanzozt/metrics v1.4.2 // indirect
+	github.com/hanzozt/secretstream v0.1.39 // indirect
+	github.com/hanzozt/transport/v2 v2.0.194 // indirect
 	github.com/orcaman/concurrent-map/v2 v2.0.1 // indirect
 	github.com/parallaxsecond/parsec-client-go v0.0.0-20221025095442-f0a77d263cf9 // indirect
 	github.com/power-devops/perfstat v0.0.0-20240221224432-82ca36839d55 // indirect

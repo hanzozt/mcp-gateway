@@ -16,8 +16,8 @@ import (
 	"github.com/google/uuid"
 	"github.com/michaelquigley/df/dl"
 	"github.com/modelcontextprotocol/go-sdk/mcp"
-	"github.com/openziti/mcp-gateway/aggregator"
-	"github.com/openziti/mcp-gateway/tools"
+	"github.com/hanzozt/mcp-gateway/aggregator"
+	"github.com/hanzozt/mcp-gateway/tools"
 )
 
 // ClientContext holds information about the connecting client.

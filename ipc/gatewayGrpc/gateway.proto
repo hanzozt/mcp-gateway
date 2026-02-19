@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "github.com/openziti/mcp-gateway/ipc/gatewayGrpc";
+option go_package = "github.com/hanzozt/mcp-gateway/ipc/gatewayGrpc";
 
 service GatewayIPC {
     // bidirectional stream: gateway connects, both sides send messages

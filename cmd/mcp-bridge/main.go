@@ -7,8 +7,8 @@ import (
 	"syscall"
 
 	"github.com/michaelquigley/df/dl"
-	"github.com/openziti/mcp-gateway/bridge"
-	"github.com/openziti/mcp-gateway/build"
+	"github.com/hanzozt/mcp-gateway/bridge"
+	"github.com/hanzozt/mcp-gateway/build"
 	"github.com/spf13/cobra"
 )
 
@@ -73,7 +73,7 @@ func run(_ *cobra.Command, args []string) {
 }
 
 func main() {
-	dl.Init(dl.DefaultOptions().SetTrimPrefix("github.com/openziti/"))
+	dl.Init(dl.DefaultOptions().SetTrimPrefix("github.com/hanzozt/"))
 	if err := rootCmd.Execute(); err != nil {
 		dl.Fatalf(err)
 	}

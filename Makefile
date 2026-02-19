@@ -5,7 +5,7 @@ SHELL := bash
 DIST_DIR     ?= dist
 GO           ?= go
 GORELEASER   ?= goreleaser
-MODULE       := github.com/openziti/mcp-gateway
+MODULE       := github.com/hanzozt/mcp-gateway
 CMDS         := mcp-gateway mcp-bridge mcp-tools
 VERSION      ?= $(shell git describe --tags --always --dirty 2>/dev/null || echo dev)
 HASH         ?= $(shell git rev-parse --short HEAD 2>/dev/null || echo unknown)
@@ -54,7 +54,7 @@ snapshot:
 	echo "$(GORELEASER) build --clean --snapshot --single-target --config $$cfg"; \
 	$(GORELEASER) build --clean --snapshot --single-target --config "$$cfg"
 
-DOCKER_REPO  ?= openziti/mcp-gateway
+DOCKER_REPO  ?= hanzozt/mcp-gateway
 DOCKER_TAG   ?= local
 
 ## docker: build container image for the native platform

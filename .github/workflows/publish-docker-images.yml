@@ -70,7 +70,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ vars.MCP_GATEWAY_CONTAINER_IMAGE_REPO || 'openziti/mcp-gateway' }}
+          images: ${{ vars.MCP_GATEWAY_CONTAINER_IMAGE_REPO || 'hanzozt/mcp-gateway' }}
           flavor: |
             latest=false
           tags: |
@@ -95,7 +95,7 @@ jobs:
       - name: Publish Attestations to GitHub
         uses: actions/attest-build-provenance@v1
         env:
-          IMAGE_REPO: ${{ vars.MCP_GATEWAY_CONTAINER_IMAGE_REPO || 'openziti/mcp-gateway' }}
+          IMAGE_REPO: ${{ vars.MCP_GATEWAY_CONTAINER_IMAGE_REPO || 'hanzozt/mcp-gateway' }}
         with:
           subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_REPO }}
           subject-digest: ${{ steps.push.outputs.digest }}

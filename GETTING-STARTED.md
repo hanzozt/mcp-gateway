@@ -26,7 +26,7 @@ Enter your email address when prompted. You'll receive an invitation email with 
 
 ### Install zrok
 
-Download the zrok `v2.0.0-rc5`+ binary for your platform from the [releases page](https://github.com/openziti/zrok/releases/tag/v2.0.0-rc5).
+Download the zrok `v2.0.0-rc5`+ binary for your platform from the [releases page](https://github.com/hanzozt/zrok/releases/tag/v2.0.0-rc5).
 
 The binary is named `zrok2` to distinguish it from the v1.x series.
 
@@ -53,7 +53,7 @@ Let's start simple: expose a filesystem MCP server over the network.
 ### Install MCP Gateway Tools
 
 ```bash
-go install github.com/openziti/mcp-gateway/cmd/...@latest
+go install github.com/hanzozt/mcp-gateway/cmd/...@latest
 ```
 
 This installs all three tools: `mcp-gateway`, `mcp-bridge`, and `mcp-tools`.

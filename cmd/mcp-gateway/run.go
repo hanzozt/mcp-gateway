@@ -7,7 +7,7 @@ import (
 	"os/signal"
 
 	"github.com/michaelquigley/df/dl"
-	"github.com/openziti/mcp-gateway/gateway"
+	"github.com/hanzozt/mcp-gateway/gateway"
 	"github.com/spf13/cobra"
 )
 
@@ -53,7 +53,7 @@ func (cmd *runCommand) run(_ *cobra.Command, args []string) {
 			dl.Fatalf("failed to open log file '%s': %v", cfg.LogFile, err)
 		}
 		defer logFile.Close()
-		dl.Init(dl.DefaultOptions().SetTrimPrefix("github.com/openziti/").SetOutput(logFile).JSON())
+		dl.Init(dl.DefaultOptions().SetTrimPrefix("github.com/hanzozt/").SetOutput(logFile).JSON())
 
 		// redirect stderr to log file so we can see panic messages
 		// (panics go to stderr, not to the logger)

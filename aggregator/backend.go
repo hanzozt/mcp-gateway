@@ -9,7 +9,7 @@ import (
 
 	"github.com/michaelquigley/df/dl"
 	"github.com/modelcontextprotocol/go-sdk/mcp"
-	"github.com/openziti/mcp-gateway/tools"
+	"github.com/hanzozt/mcp-gateway/tools"
 )
 
 // Backend represents a connection to a single backend MCP server.
