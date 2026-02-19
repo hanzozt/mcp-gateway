@@ -4,7 +4,7 @@
 
 MCP Gateway lets AI assistants securely access internal tools without exposing public endpoints. Built on Hanzo ZT and zrok, it provides cryptographically secure, zero trust connectivity with no attack surface.
 
-MCP Gateway is sponsored by [NetFoundry](https://netfoundry.io) as part of its portfolio of solutions for secure workloads and agentic computing. NetFoundry is the creator of [Hanzo ZT](https://netfoundry.io/docs/hanzozt/) and [zrok](https://netfoundry.io/docs/zrok/getting-started).
+MCP Gateway is built by [Hanzo AI](https://hanzo.ai) as part of the [Hanzo Zero Trust](https://github.com/hanzoai/zt) networking stack.
 
 ## The Trifecta
 

@@ -1,9 +1,9 @@
-# Multi-stage build from upstream openziti source
+# Multi-stage build from hanzoai source
 # Builds mcp-gateway binaries and packages them
 FROM golang:1.25-bookworm AS builder
 
 WORKDIR /src
-RUN git clone --depth 1 https://github.com/openziti/mcp-gateway.git .
+RUN git clone --depth 1 https://github.com/hanzoai/mcp-gateway.git .
 
 RUN CGO_ENABLED=0 go build -ldflags '-s -w' -o /out/mcp-gateway ./cmd/mcp-gateway && \
     CGO_ENABLED=0 go build -ldflags '-s -w' -o /out/mcp-bridge ./cmd/mcp-bridge && \

@@ -20,7 +20,7 @@ jobs:
           go-version: '1.25'
 
       - name: Clone upstream source
-        run: git clone --depth 1 https://github.com/openziti/mcp-gateway.git src
+        run: git clone --depth 1 https://github.com/hanzoai/mcp-gateway.git src
 
       - name: Build binaries
         working-directory: src

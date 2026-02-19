@@ -9,8 +9,8 @@ ARG TARGETARCH
 
 ### Required OpenShift Labels
 LABEL name="hanzozt/mcp-gateway" \
-      maintainer="support@netfoundry.io" \
-      vendor="NetFoundry" \
+      maintainer="dev@hanzo.ai" \
+      vendor="Hanzo AI" \
       summary="Run the MCP Gateway" \
       description="Aggregate and serve MCP tools via zrok" \
       org.opencontainers.image.description="Aggregate and serve MCP tools via zrok" \
