@@ -5,7 +5,7 @@ import (
 	"net"
 
 	"github.com/michaelquigley/df/dl"
-	"github.com/hanzozt/sdk-golang/ziti/edge"
+	"github.com/hanzozt/sdk-golang/zt/edge"
 	"github.com/hanzozt/zrok/v2/environment"
 	"github.com/hanzozt/zrok/v2/environment/env_core"
 	"github.com/hanzozt/zrok/v2/sdk/golang/sdk"
