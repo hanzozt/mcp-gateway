@@ -106,3 +106,16 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	nhooyr.io/websocket v1.8.17 // indirect
 )
+
+// Map hanzozt modules to upstream openziti until we publish our own
+replace (
+	github.com/hanzozt/channel/v4 => github.com/openziti/channel/v4 v4.2.37
+	github.com/hanzozt/edge-api => github.com/openziti/edge-api v0.26.48
+	github.com/hanzozt/foundation/v2 => github.com/openziti/foundation/v2 v2.0.77
+	github.com/hanzozt/identity => github.com/openziti/identity v1.0.116
+	github.com/hanzozt/metrics => github.com/openziti/metrics v1.4.2
+	github.com/hanzozt/sdk-golang => github.com/openziti/sdk-golang v1.2.8
+	github.com/hanzozt/secretstream => github.com/openziti/secretstream v0.1.39
+	github.com/hanzozt/transport/v2 => github.com/openziti/transport/v2 v2.0.194
+	github.com/hanzozt/zrok/v2 => github.com/openziti/zrok/v2 v2.0.0-rc5
+)

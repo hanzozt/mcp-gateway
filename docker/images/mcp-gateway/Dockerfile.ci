@@ -1,0 +1,5 @@
+FROM debian:bookworm-slim
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates && rm -rf /var/lib/apt/lists/*
+COPY dist/mcp-gateway dist/mcp-bridge dist/mcp-tools /usr/local/bin/
+USER 65534:65534
+ENTRYPOINT ["mcp-gateway"]

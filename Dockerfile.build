@@ -1,0 +1,16 @@
+# Multi-stage build from upstream openziti source
+# Builds mcp-gateway binaries and packages them
+FROM golang:1.25-bookworm AS builder
+
+WORKDIR /src
+RUN git clone --depth 1 https://github.com/openziti/mcp-gateway.git .
+
+RUN CGO_ENABLED=0 go build -ldflags '-s -w' -o /out/mcp-gateway ./cmd/mcp-gateway && \
+    CGO_ENABLED=0 go build -ldflags '-s -w' -o /out/mcp-bridge ./cmd/mcp-bridge && \
+    CGO_ENABLED=0 go build -ldflags '-s -w' -o /out/mcp-tools  ./cmd/mcp-tools
+
+FROM debian:bookworm-slim
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates && rm -rf /var/lib/apt/lists/*
+COPY --from=builder /out/mcp-gateway /out/mcp-bridge /out/mcp-tools /usr/local/bin/
+USER 65534:65534
+ENTRYPOINT ["mcp-gateway"]
